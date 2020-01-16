@@ -2,6 +2,7 @@
 #include <stdlib.h>
 //#include <conio.h>
 #include <windows.h> ///Needed for SetPosition()
+#include "BasicFunctions.h"
 
 int currentMenuID = 0;
 char * errorLogFilePath = "eeeeTESTYYYYYY";
@@ -15,16 +16,6 @@ typedef struct menuNavigatorData
     char sizeOfNavigationField;
     char currentPosition;
 } MenuNavigatorData;
-
-///Shamelessly stollen from internet
-void SetPosition(int X, int Y)
-{
-    HANDLE Screen;
-    Screen = GetStdHandle(STD_OUTPUT_HANDLE);
-    COORD Position={X, Y};
-
-    SetConsoleCursorPosition(Screen, Position);
-}
 
 //void CycleNavigator(* MenuNavigatorData navigator ,char a)
 //{
