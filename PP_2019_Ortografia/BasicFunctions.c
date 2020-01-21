@@ -100,7 +100,8 @@ int DisplayDirectoryFiles(char * directoryPath)
         /* print all the files and directories within directory */
         while ((ent = readdir (dir)) != NULL)
         {
-            printf ("%s\n", ent->d_name);
+            if(count > 1) ///by nie wyœwietla³ "." i ".."
+                printf ("  %s\n", ent->d_name);
             count++;
         }
         closedir (dir);
@@ -109,6 +110,7 @@ int DisplayDirectoryFiles(char * directoryPath)
     {
     /* could not open directory */
     perror ("Nie znaleziono folderu o danej sciezce.");
+    printf("\n\n\nBLAD: Nie znaleziono folderu o danej sciezce \"%s\" \n Nacisnij ESC by wyjsc", directoryPath);
     return EXIT_FAILURE;
     }
     return count;
@@ -143,6 +145,7 @@ FILE* GetDirectoryFileByIndex(char * directoryPath, int index)
     {
     /* could not open directory */
     perror ("Nie znaleziono folderu o danej sciezce.");
+    printf("\n\n\nBLAD: Nie znaleziono folderu o danej sciezce \"%s\" \n Nacisnij ESC by wyjsc", directoryPath);
     return EXIT_FAILURE;
     }
     return NULL;

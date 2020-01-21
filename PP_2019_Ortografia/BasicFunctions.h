@@ -9,7 +9,7 @@ void DisplayFile(FILE *);
 
 short GetConsoleSize(char);
 
-void DisplayDirectoryFiles(char);
+int DisplayDirectoryFiles(char);
 
 FILE* GetDirectoryFileByIndex(char * directoryPath, int index)
 
