@@ -35,6 +35,12 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="BasicFunctions.h" />
+		<Unit filename="HiddenChars.h" />
+		<Unit filename="MenuNavigation.h" />
+		<Unit filename="Menus.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Menus.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
