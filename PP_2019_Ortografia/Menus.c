@@ -31,7 +31,7 @@ void Draw_Dyktando()
 }
 
 
-void Draw_DyktandoMenu(struct hiddenChar * hiddenCharList)
+void Draw_DyktandoMenu(struct Char * hiddenCharsList)
 {
     printf("Dostowowane Dyktanda:\n");
     printf("To menu umozliwia definiowanie wlasnych liter ktore pozniej maja byc uzupelnione w odroznieniu od Gotowych Dyktand\n\n"); ///it's early access soo we are not supposed to polish project, this works this way i guess...
@@ -39,7 +39,7 @@ void Draw_DyktandoMenu(struct hiddenChar * hiddenCharList)
     printf("  2. Wybierz dyktando\n");
     printf("  3. Wroc do Menu Glownego\n");
     printf(" Ukryj: ");
-    HiddenCharList_Display(hiddenCharList);
+    CharList_Display(hiddenCharsList);
 
     printf("\n\n [Ukryte Znaki wprowadzasz przyciskajac klawisze je reprezentujace, a powinny sie wyswietlic u gory]");
     printf("\n\n [Niepoprawne znaki sa pokazwyane jako puste miejsca, oraz dziwne znaki\n");
@@ -54,14 +54,14 @@ void Draw_DyktandoMenu(struct hiddenChar * hiddenCharList)
 ///Logika wyboru i kofigurowania dyktand
 char DyktandoMenu()
 {
-    struct hiddenChar* hiddenCharList = HiddenCharList_Initialize();
+    struct Char* hiddenCharsList = CharList_Initialize();
 
     MenuNavigatorData navigator;
     Navigator_SetValues(&navigator, 3, 3);
 
     ///Clearing last menu and drawing this one
     system("cls");
-    Draw_DyktandoMenu(hiddenCharList);
+    Draw_DyktandoMenu(hiddenCharsList);
 
 
     char input;
@@ -74,7 +74,7 @@ char DyktandoMenu()
     {
         ///Te menu musi siê zawsze przeryssowywaæ by odpowiednio wyœwietlaæ Ukryte Znaki
         system("cls");
-        Draw_DyktandoMenu(hiddenCharList);
+        Draw_DyktandoMenu(hiddenCharsList);
         Navigator_Draw(&navigator);
 
         if(overrideInputFlag == 1)
@@ -130,7 +130,7 @@ char DyktandoMenu()
             }
             default:
             {
-                HiddenCharList_XOR(hiddenCharList, input);
+                CharList_XOR(hiddenCharsList, input);
                 break;
             }
         }
@@ -344,8 +344,11 @@ char MainMenu()
 void MenuTest()
 {
     //DisplayDirectoryFiles("C:\\PP_Proyekt\\PP_Projekt_1_Semestr\\PP_2019_Ortografia");
-    DisplayDirectoryFiles(".\\Dyktanda");
-    DisplayFile(GetDirectoryFileByIndex(".\\Dyktanda", 2));
+    DisplayDirectoryFiles("Dyktanda");
+    printf("\n\n");
+    DisplayFileByPath("Dyktanda\\Pangramy.txt");
+    printf("\n\n");
+    DisplayFile(GetDirectoryFileByIndex("Dyktanda", 2));
 
 //    struct hiddenChar * list = HiddenCharList_Initialize();
 //

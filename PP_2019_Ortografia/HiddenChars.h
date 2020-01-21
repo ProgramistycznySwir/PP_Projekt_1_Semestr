@@ -1,16 +1,18 @@
 #ifndef HIDDENCHARS_H_INCLUDED
 #define HIDDENCHARS_H_INCLUDED
 
-typedef struct hiddenChar
+///Nazwa zmiennej by³a HiddenChar w poprzednich wersjach, a z racji ¿e zmiana nazwy pliku .h nie jest wymagana to i tego nie zrobiê :P
+
+typedef struct Char
 {
     char c;
-    struct hiddenChar * next;
-}HiddenChar;
+    struct Char* next;
+}Char_type;
 
 ///Inicjalizuje listê
-struct hiddenChar * HiddenCharList_Initialize()
+struct Char* CharList_Initialize()
 {
-    struct hiddenChar * list = (struct hiddenChar *)malloc(sizeof(struct hiddenChar *)); ///jedynie head listy, nic poza tym nie robi
+    struct Char* list = (struct Char*)malloc(sizeof(struct Char*)); ///jedynie head listy, nic poza tym nie robi
     list->c = 0; ///listCount - tylko na headzie
     list->next = NULL;
     return list;
@@ -20,19 +22,19 @@ struct hiddenChar * HiddenCharList_Initialize()
 //void HiddenCharList_Erase(struct hiddenChar * head)
 
 ///0 - jeœli nie ma, 1 - jest
-char HiddenCharList_Find() ///NOT IMPLEMENTED
+char CharList_Find() ///NOT IMPLEMENTED
 {
     return 0;
 }
 
 ///Dodaje element na koniec listy
-void HiddenCharList_Append(struct hiddenChar * head, char c) ///NOT USED
+void CharList_Append(struct Char* head, char c) ///NOT USED
 {
-    struct hiddenChar * ptr = head;
+    struct Char * ptr = head;
     while(ptr->next != NULL) ///przechodzi na koniec listy
         ptr = ptr->next;
 
-    struct hiddenChar * newChar = (struct hiddenChar *)malloc(sizeof(struct hiddenChar *));
+    struct Char * newChar = (struct Char*)malloc(sizeof(struct Char*));
     newChar->c = c;
     ptr->next = newChar;
     newChar->next = NULL;
@@ -43,10 +45,10 @@ void HiddenCharList_Append(struct hiddenChar * head, char c) ///NOT USED
 }
 
 ///Jeœli na liœcie jest ten element to go z niej zabiera, a jak nie ma to dodaje
-void HiddenCharList_XOR(struct hiddenChar * head, char c)
+void CharList_XOR(struct Char* head, char c)
 {
-    struct hiddenChar * ptr1 = head;
-    struct hiddenChar * ptr2 = ptr1->next;
+    struct Char* ptr1 = head;
+    struct Char* ptr2 = ptr1->next;
     while(ptr2 != NULL)
     {
         if(ptr2->c == c) ///jeœli wykryje znak w liœcie to go z niej usuwa
@@ -60,13 +62,13 @@ void HiddenCharList_XOR(struct hiddenChar * head, char c)
         ptr2 = ptr2->next;
     }
     ///Mo¿na to zrobiæ jeszcze "metod¹" Append() ale skoro ju¿ mamy koñcowy element listy...
-    ptr1->next = (struct hiddenChar *)malloc(sizeof(struct hiddenChar *));
+    ptr1->next = (struct Char*)malloc(sizeof(struct Char*));
     ptr1->next->c = c;
     ptr1->next->next = NULL;
     return;
 }
 
-void HiddenCharList_Display(struct hiddenChar * head)
+void CharList_Display(struct Char* head)
 {
     head = head->next;
 //    if(head == NULL)

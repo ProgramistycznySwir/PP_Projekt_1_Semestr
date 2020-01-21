@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <windows.h>
+#include <string.h>
 
 ///Shamelessly stollen from internet
 void XY(int X, int Y)
@@ -17,13 +18,14 @@ void DisplayFileByPath(char * path) ///NOT USED
 
     char string[0];
     fscanf(file, "%s", string);
+    printf("%s", string);
 
-    int i = 0;
-    while(string[i] != EOF && string[i] != '\n')
-    {
-        putc(string[i], stdout);
-        i++;
-    }
+//    int i = 0;
+//    while(string[i] != EOF && string[i] != '\n')
+//    {
+//        putc(string[i], stdout);
+//        i++;
+//    }
 
     //printf("%s", string);
 
@@ -35,15 +37,22 @@ void DisplayFileByPath(char * path) ///NOT USED
 
 void DisplayFile(FILE * file) ///NOT USED
 {
-    char string[0];
-    fscanf(file, "%s", string);
-
-    int i = 0;
-    while(string[i] != EOF && string[i] != '\n')
+    //char string[0];
+    //fscanf(file, "%s", string);
+    //printf("%s", string);
+    char c = getc(file);
+    while(c != EOF)
     {
-        putc(string[i], stdout);
-        i++;
+        putc(c, stdout);
+        c = getc(file);
     }
+
+//    int i = 0;
+//    while(string[i] != EOF && string[i] != '\n')
+//    {
+//        putc(string[i], stdout);
+//        i++;
+//    }
     return;
 }
 
@@ -117,8 +126,14 @@ FILE* GetDirectoryFileByIndex(char * directoryPath, int index)
         {
             if(i == index)
             {
+                char* properPath = malloc(strlen(directoryPath) + strlen(ent->d_name) + 1);
+
+                strcpy(properPath, directoryPath);
+                strcat(properPath, "\\");
+                strcat(properPath, ent->d_name);
+
                 closedir (dir);
-                return fopen(ent->d_name, "r+");
+                return fopen(properPath, "r");
             }
             i++;
         }
