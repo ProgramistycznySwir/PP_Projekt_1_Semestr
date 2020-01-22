@@ -5,12 +5,33 @@
 ///Shamelessly stollen from internet
 void XY(int X, int Y)
 {
-    HANDLE Screen;
-    Screen = GetStdHandle(STD_OUTPUT_HANDLE);
+    HANDLE consoleHandle;
+    consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
     COORD Position={X, Y};
 
-    SetConsoleCursorPosition(Screen, Position);
+    SetConsoleCursorPosition(consoleHandle, Position);
 }
+
+///Get(s) Console C(ursor) P(osition) X/Y
+int GetConsoleCPX()
+{
+    HANDLE consoleHandle;
+
+    CONSOLE_SCREEN_BUFFER_INFO SBInfo;
+    GetConsoleScreenBufferInfo(consoleHandle, &SBInfo);
+
+    return SBInfo.dwCursorPosition.X;
+}
+int GetConsoleCPY()
+{
+    HANDLE consoleHandle;
+
+    CONSOLE_SCREEN_BUFFER_INFO SBInfo;
+    GetConsoleScreenBufferInfo(consoleHandle, &SBInfo);
+
+    return SBInfo.dwCursorPosition.Y;
+}
+
 
 void DisplayFileByPath(char * path) ///NOT USED
 {

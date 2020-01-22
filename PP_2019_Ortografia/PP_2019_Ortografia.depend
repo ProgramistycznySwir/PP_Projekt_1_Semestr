@@ -1,11 +1,11 @@
 # depslib dependency file v1.0
-1579606559 source:c:\pp_proyekt\pp_projekt_1_semestr\pp_2019_ortografia\main.c
+1579609242 source:c:\pp_proyekt\pp_projekt_1_semestr\pp_2019_ortografia\main.c
 	<windows.h>
 	<stdio.h>
 	<stdlib.h>
 	"Menus.h"
 
-1579606574 source:c:\pp_proyekt\pp_projekt_1_semestr\pp_2019_ortografia\basicfunctions.c
+1579614788 source:c:\pp_proyekt\pp_projekt_1_semestr\pp_2019_ortografia\basicfunctions.c
 	<stdio.h>
 	<windows.h>
 	<string.h>
@@ -26,11 +26,12 @@
 
 1579572601 c:\pp_proyekt\pp_projekt_1_semestr\pp_2019_ortografia\menus.h
 
-1579605434 source:c:\pp_proyekt\pp_projekt_1_semestr\pp_2019_ortografia\menus.c
+1579615805 source:c:\pp_proyekt\pp_projekt_1_semestr\pp_2019_ortografia\menus.c
 	<stdio.h>
 	<stdlib.h>
 	"MenuNavigation.h"
 	"HiddenChars.h"
+	<conio.h>
 
-1579582716 c:\pp_proyekt\pp_projekt_1_semestr\pp_2019_ortografia\hiddenchars.h
+1579609189 c:\pp_proyekt\pp_projekt_1_semestr\pp_2019_ortografia\hiddenchars.h
 

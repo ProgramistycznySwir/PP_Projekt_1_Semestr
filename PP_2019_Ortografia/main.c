@@ -20,9 +20,9 @@
 
 int main()
 {
-    MainMenu();
+//    MainMenu();
 
-    //MenuTest();
+    MenuTest();
 
 
 

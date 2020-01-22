@@ -4,6 +4,9 @@
 
 void XY(int, int);
 
+int GetConsoleCPX();
+int GetConsoleCPY();
+
 void DisplayFileByPath(char *);
 void DisplayFile(FILE *);
 

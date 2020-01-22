@@ -28,24 +28,24 @@ char CharList_Find() ///NOT IMPLEMENTED
 }
 
 ///Dodaje element na koniec listy
-void CharList_Append(struct Char* head, char c) ///NOT USED
+void CharList_Append(struct Char* head, char c)
 {
     struct Char * ptr = head;
     while(ptr->next != NULL) ///przechodzi na koniec listy
         ptr = ptr->next;
 
-    struct Char * newChar = (struct Char*)malloc(sizeof(struct Char*));
-    newChar->c = c;
-    ptr->next = newChar;
-    newChar->next = NULL;
+    struct Char * newListElement = (struct Char*)malloc(sizeof(struct Char*));
+    newListElement->c = c;
+    ptr->next = newListElement;
+    newListElement->next = NULL;
 
     head->c++;
 
     return;
 }
 
-///Jeœli na liœcie jest ten element to go z niej zabiera, a jak nie ma to dodaje
-void CharList_XOR(struct Char* head, char c)
+///Jeœli na liœcie jest ten element to go z niej zabiera, a jak nie ma to dodaje (stara funkcjonalnoœæ)
+void CharList_XOR(struct Char* head, char c) ///NOTUSED - FUNCTIONALITY ABANDONED
 {
     struct Char* ptr1 = head;
     struct Char* ptr2 = ptr1->next;
@@ -79,6 +79,49 @@ void CharList_Display(struct Char* head)
         head = head->next;
     }
     return;
+}
+
+///Char(acter)P(osition)T(racker) - struktura Char rozszerzona o pozycjê (x,y)
+typedef struct CharPT
+{
+    char c;
+    short x;
+    short y;
+    struct CharPT* next;
+}CharPT_type;
+
+struct CharPT* CharPTList_Initialize()
+{
+    struct CharPT* list = (struct CharPT*)malloc(sizeof(struct CharPT*)); ///jedynie head listy, nic poza tym nie robi
+    list->c = 0; ///listCount - tylko na headzie
+    list->next = NULL;
+    return list;
+}
+
+void CharPTList_Append(struct CharPT* head, char c, short posX, short posY)
+{
+    struct CharPT * ptr = head;
+    while(ptr->next != NULL) ///przechodzi na koniec listy
+        ptr = ptr->next;
+
+    struct CharPT * newListElement = (struct CharPT*)malloc(sizeof(struct CharPT*));
+    newListElement->c = c;
+    newListElement->x = posX;
+    newListElement->y = posY;
+    ptr->next = newListElement;
+    newListElement->next = NULL;
+
+    head->c++;
+
+    return;
+}
+
+///0 - different (or some sort of error), 1 - same
+char CompareListElements(struct Char* a, struct CharPT* b)
+{
+    if(a->c == b->c)
+        return 1;
+    return 0;
 }
 
 #endif // HIDDENCHARS_H_INCLUDED
